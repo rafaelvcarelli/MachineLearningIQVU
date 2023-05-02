@@ -63,15 +63,16 @@ ___
     
     plot(hc1, cex = 0.6, hang = -1)
 
-[https://i.ibb.co/SJ5520c/hclustsimples.jpg](https://i.ibb.co/SJ5520c/hclustsimples.jpg)
+
+![https://i.ibb.co/SJ5520c/hclustsimples.jpg](https://i.ibb.co/SJ5520c/hclustsimples.jpg)
 
     plot(hc2, cex = 0.6, hang = -1)
 
-[https://i.ibb.co/N3th3n1/hclustcomplete.jpg](https://i.ibb.co/N3th3n1/hclustcomplete.jpg)
+![https://i.ibb.co/N3th3n1/hclustcomplete.jpg](https://i.ibb.co/N3th3n1/hclustcomplete.jpg)
 
     plot(hc3, cex = 0.6, hang = -1)
 
-[https://i.ibb.co/wJ9cNd5/hclustaverage.jpg](https://i.ibb.co/wJ9cNd5/hclustaverage.jpg)
+![https://i.ibb.co/wJ9cNd5/hclustaverage.jpg](https://i.ibb.co/wJ9cNd5/hclustaverage.jpg)
     
     dend1 <- as.dendrogram(hc1)
     dend2 <- as.dendrogram(hc2)
@@ -82,4 +83,4 @@ ___
     
     fviz_nbclust(IQVUINDICESCLUS, FUN = hcut, method = "wss")
 
-[https://i.ibb.co/NS8BtSC/elbowhclust.jpg](https://i.ibb.co/NS8BtSC/elbowhclust.jpg)
+![https://i.ibb.co/NS8BtSC/elbowhclust.jpg](https://i.ibb.co/NS8BtSC/elbowhclust.jpg)
