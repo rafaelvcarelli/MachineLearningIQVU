@@ -1,4 +1,4 @@
-## O script de clusteriação hierárquica dos dados está aqui descrito de forma textual. O script na íntegra é o arquivo [EDAIQVU.R](https://github.com/rafaelvcarelli/MachineLearningIQVU/blob/main/An%C3%A1lise%20Explorat%C3%B3ria/EDAIQVU.R).
+## O script de clusteriação hierárquica dos dados está aqui descrito de forma textual. O script na íntegra é o arquivo [ClustersHierarquico.R](https://github.com/rafaelvcarelli/MachineLearningIQVU/blob/main/Cluster%20hier%C3%A1rquicos/ClustersHierarquico.R).
 
 ___
 
