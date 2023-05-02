@@ -1,4 +1,4 @@
-# CARREGAMENTO DOS PACOTES (REFERENCIAR PROFS) ----
+# CARREGAMENTO DOS PACOTES
 
 pacotes <- c("plotly","tidyverse","knitr","kableExtra","car","rgl","gridExtra",
              "PerformanceAnalytics","reshape2","rayshader","psych","ggrepel",
@@ -55,9 +55,8 @@ plot(hc3, cex = 0.6, hang = -1)
 dend1 <- as.dendrogram(hc1)
 dend2 <- as.dendrogram(hc2)
 dend3 <- as.dendrogram(hc3)
-dend4 <- as.dendrogram(hc4)
 
 clusthierq <- hclust(distmatrixIQVU, method = "average")
 
 fviz_nbclust(IQVUINDICESCLUS, FUN = hcut, method = "wss")
-rect.hclust(hc4, k = 2)
+
