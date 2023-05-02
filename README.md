@@ -11,8 +11,10 @@
 
 ___
 
-## - [Análise exploratória dos dados](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/An%C3%A1lise%20Explorat%C3%B3ria)
+#### -  [Base de dados bruta (PBH)](https://github.com/rafaelvcarelli/MachineLearningIQVU/blob/main/bd_iqvu_1994_2016_jan19.xlsx)
 
-## - [Clusterização hierárquica](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20hier%C3%A1rquicos)
+#### - [Análise exploratória dos dados](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/An%C3%A1lise%20Explorat%C3%B3ria)
 
-## - [Clusterização não-hierárquica](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20n%C3%A3o-hierarquico)
+#### - [Clusterização hierárquica](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20hier%C3%A1rquicos)
+
+#### - [Clusterização não-hierárquica](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20n%C3%A3o-hierarquico)
