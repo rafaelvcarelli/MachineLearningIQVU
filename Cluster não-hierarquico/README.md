@@ -129,7 +129,7 @@ ___
     bairrosregionalcluster1 <- k3cluster1_filtrado[, 1:2]
     bairrosregionalcluster2 <- k3cluster2_filtrado[, 1:2]
     bairrosregionalcluster3 <- k3cluster3_filtrado[, 1:2]
-##VISUALIZAÇÃO
+## VISUALIZAÇÃO
 #### Abaixo, uma visualização dos clusters pelo número de bairros em cada regional dos agrupamentos encontrados.
 
     ggplot(bairrosregionalcluster1, aes(REGIONAL)) +
