@@ -84,3 +84,7 @@ ___
     fviz_nbclust(IQVUINDICESCLUS, FUN = hcut, method = "wss")
 
 ![https://i.ibb.co/NS8BtSC/elbowhclust.jpg](https://i.ibb.co/NS8BtSC/elbowhclust.jpg)
+
+___
+
+### - [Cluster não - hierárquico](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20n%C3%A3o-hierarquico)

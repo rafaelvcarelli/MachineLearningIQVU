@@ -157,3 +157,7 @@
 	  theme_minimal()
 
 ![](https://i.ibb.co/xjVqYwK/mediasvendan.jpg)
+
+___
+
+### - [Cluster hierárquicos](https://github.com/rafaelvcarelli/MachineLearningIQVU/tree/main/Cluster%20hier%C3%A1rquicos)
