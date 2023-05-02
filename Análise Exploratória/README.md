@@ -1,3 +1,6 @@
+## O script de análise exploratória dos dados está aqui descrito de forma textual. O script na íntegra é o arquivo [EDAIQVU.R](https://github.com/rafaelvcarelli/MachineLearningIQVU/blob/main/An%C3%A1lise%20Explorat%C3%B3ria/EDAIQVU.R).
+
+
 ## CARREGAMENTO DOS PACOTES (função criada pelo professor Rafael de Souza) ----
 
     pacotes <- c("plotly","tidyverse","knitr","kableExtra","car","rgl","gridExtra",
