@@ -3,7 +3,7 @@
 pacotes <- c("plotly","tidyverse","knitr","kableExtra","car","rgl","gridExtra",
              "PerformanceAnalytics","reshape2","rayshader","psych","ggrepel",
              "factoextra","sp","tmap","magick", "ggcorrplot", "plotly", "DataExplorer",
-             "sjPlot", "psych", "rela", "MASS", "parallel")
+             "sjPlot", "psych", "rela", "MASS", "parallel", "RColorBrewer")
 
 if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
   instalador <- pacotes[!pacotes %in% installed.packages()]
@@ -15,10 +15,12 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
   sapply(pacotes, require, character = T) 
 }
 
+
 options(scipen = 5)
 
-# SUGERIDO DE QUATRO GRUPOS, MAS O GRUPO 1 CONTÉM 75 BAIRROS, NÃO CONTEMPLA A BASE
-# TENTATIVA MÉTODO NÃO-HIERÁRQUICO
+#### Criação de um segundo objeto, IQVUINDICESCLUS, para criação dos clusters não-hierárquicos. Primeiro, apenas a tabela dos dados originais sem as regionais. 
+
+####Depois, a transformação da primeira coluna da base de dados nova em uma coluna com os nomes dos bairros.
 
 IQVU2016 <- readxl::read_xlsx("dados2016.xlsx")
 
@@ -38,8 +40,12 @@ IQVUINDICESCLUS
 IQVUINDICESCLUS <- scale(IQVUINDICESCLUS)
 IQVUINDICESCLUS <- as.data.frame(IQVUINDICESCLUS)
 
+##### Pelo método kmeans, criamos um cluster com dois centróides agrupandos os bairros de Belo Horizonte.
+
 K2IQVU <- kmeans(IQVUINDICESCLUS, centers = 2)
 fviz_cluster(K2IQVU, data = IQVUINDICESCLUS, main = "Clusters com dois centróides")
+
+#### Criamos também clusters com 3, 4 e 5 centróides.
 
 K3IQVU <- kmeans(IQVUINDICESCLUS, centers = 3)
 K4IQVU <- kmeans(IQVUINDICESCLUS, centers = 4)
@@ -54,9 +60,11 @@ agrupamento2 <- fviz_cluster(K3IQVU, geom = "point",  data = IQVUINDICESCLUS) + 
 agrupamento3 <- fviz_cluster(K4IQVU, geom = "point",  data = IQVUINDICESCLUS) + ggtitle("k = 4")
 agrupamento4 <- fviz_cluster(K5IQVU, geom = "point",  data = IQVUINDICESCLUS) + ggtitle("k = 5")
 
+#### Os quatro clusters agrupados com 2, 3, 4 e 5 centróides são visualizados desta forma.
+
 grid.arrange(agrupamento1, agrupamento2, agrupamento3, agrupamento4, nrow = 2)
 
-# MÉTODO ELBOW, SILHOUETTE, GAP_STAT
+#### Os métodos Elbow, Silhouette e Gap definem, por meio de estatística, o número ideal de clusters para um determinado grupo de dados.
 
 fviz_nbclust(IQVUINDICESCLUS, kmeans, method = "wss")
 
@@ -64,29 +72,17 @@ fviz_nbclust(IQVUINDICESCLUS, kmeans, method = "silhouette")
 
 fviz_nbclust(IQVUINDICESCLUS, kmeans, method = "gap_stat")
 
-
-
 bairros3clusters <- data.frame(K3IQVU$cluster)
 bairros4clusters <- data.frame(K4IQVU$cluster)
 bairros5clusters <- data.frame(K5IQVU$cluster)
 
-# Unindo o número dos clusters a tabela original
+#### Com as visualizações do método Elbow e Gap, podemos inferir que o agrupamento em três clusters é o ideal para o conjunto de dados do IQVU. Portanto, os bairros estarão agrupados em três subgrupos.
+
+#### Unindo o número dos clusters encontrados a tabela original.
 
 IQVU3CLUSTERS <-  cbind(IQVUINDICES, bairros3clusters)
 IQVU4CLUSTERS <-  cbind(IQVUINDICES, bairros4clusters)
 IQVU5CLUSTERS <-  cbind(IQVUINDICES, bairros5clusters)
-
-silhueta2k <- pam(IQVUINDICESCLUS, k = 2)
-plot(silhouette(silhueta2k))
-
-silhueta3k <- pam(IQVUINDICESCLUS, k = 3)
-plot(silhouette(silhueta3k))
-
-silhueta4k <- pam(IQVUINDICESCLUS, k = 4)
-plot(silhouette(silhueta4k))
-
-silhueta5k <- pam(IQVUINDICESCLUS, k = 5)
-plot(silhouette(silhueta5k))
 
 table(K4IQVU$cluster)
 
@@ -107,6 +103,10 @@ summarycluster3
 bairrosregionalcluster1 <- k3cluster1_filtrado[, 1:2]
 bairrosregionalcluster2 <- k3cluster2_filtrado[, 1:2]
 bairrosregionalcluster3 <- k3cluster3_filtrado[, 1:2]
+
+esquema_cores <- brewer.pal(11, "Spectral")
+
+#### Abaixo, uma visualização dos clusters pelo número de bairros em cada regional dos agrupamentos encontrados.
 
 ggplot(bairrosregionalcluster1, aes(REGIONAL)) +
   geom_bar(fill = "#2E9FDF") +
@@ -147,12 +147,16 @@ barplot(mediasclus2, col = esquema_cores, main = "Médias das Colunas do Cluster
 
 barplot(mediasclus3, col = esquema_cores, main = "Médias das Colunas do Cluster 3", xlab = "Colunas", ylab = "Média",
         names.arg = names(mediasclus1), ylim = c(0, max(mediasclus1)*1.2))
-
+#### As visualizações das médias dos clusters encontrados ajudam a entender como os bairros foram agrupados e as semelhanças entre eles.
 
 medias1 <- barplot(mediasclus1, col = esquema_cores, main = "Médias das Colunas do Cluster 1", xlab = "Colunas", ylab = "Média")
 medias2 <- barplot(mediasclus2, col = esquema_cores, main = "Médias das Colunas do Cluster 2", xlab = "Colunas", ylab = "Média")
 medias3 <- barplot(mediasclus3, col = esquema_cores, main = "Médias das Colunas do Cluster 3", xlab = "Colunas", ylab = "Média")
 
+##### Inserindo os IQVU's consolidados para cada bairro dos clusters encontrados
+
 k3cluster1_filtrado_com_IQVU <- merge(k3cluster1_filtrado, IQVU2016[, c("NOMEUP", "IQVU")], by = "NOMEUP")
 
 k3cluster2_filtrado_com_IQVU <- merge(k3cluster2_filtrado, IQVU2016[, c("NOMEUP", "IQVU")], by = "NOMEUP")
+
+k3cluster3_filtrado_com_IQVU <- merge(k3cluster3_filtrado, IQVU2016[, c("NOMEUP", "IQVU")], by = "NOMEUP")
