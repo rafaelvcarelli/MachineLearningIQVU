@@ -67,17 +67,6 @@ boxplot(IQVUINDICES[, 3:12], nrow = 3, ncol = 4)
 
 boxplot(IQVUINDICES[,5])
 
-ggplot(IQVUINDICES, aes(y=IQVUINDICES$IQVU_10_Seguranca_urbana))+ 
-  geom_boxplot(varwidth=T, fill="lightblue")  +
-  labs(x="",
-       y="Score", 
-       title="Distribution of German Universities Score")+  
-  theme_bw()+
-  theme(plot.title = element_text(size=22)
-        ,axis.text.x= element_text(size=15),
-        axis.text.y= element_text(size=15),
-        axis.title=element_text(size=18))
-
 # Em termos de abastecimento, aparentemente, a maioria dos bairros de Belo
 # Horizonte está bem atendido, bem como na questão de educação e esportes. Já os
 # níveis de segurança urbana chamam a atenção por se concentrarem perto do zero.
@@ -99,15 +88,6 @@ ggplot(IQVUINDICES, aes(x=IQVUINDICES$Educacao, y=IQVUINDICES$`Seguranca Urbana`
 # Visualmente, não é possível inferir muita coisa senão os baixos índices de segurança
 # urbana dos bairros de Belo Horizonte. Apesar disso, a maioria dos pontos está
 # com níveis em educação acima dos 0.75.
-
-ggplot(IQVUINDICES, aes(x=IQVUINDICES$`Seguranca Urbana`, y=Saude)) + 
-  geom_point() + 
-  labs(y="Saúde", 
-       x="Segurança", 
-       title="Saúde vs. Segurança")+
-  theme_dark()+
-  theme(plot.title = element_text(size=22),axis.text.x= element_text(size=15),
-        axis.text.y= element_text(size=15), axis.title=element_text(size=18))
 
 # Uma das importantes análises é a de correlação. O plot abaixo mostra as relações
 # entre as variáveis do dataset de IQVU's.
